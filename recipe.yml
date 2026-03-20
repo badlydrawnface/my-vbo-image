@@ -21,10 +21,11 @@ stages:
   - name: init-setup
     type: shell
     commands:
-     # enable i386 packages
-    - dpkg --add-architecture i386
     - lpkg --unlock
     - apt-get update
+    # enable i386 packages
+    - apt install dpkg
+    - dpkg --add-architecture i386
 
   # Put your custom actions below this comment
 
