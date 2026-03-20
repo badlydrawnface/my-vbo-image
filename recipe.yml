@@ -23,8 +23,8 @@ stages:
     commands:
     - lpkg --unlock
     - apt-get update
-    # enable i386 packages
     - apt install dpkg
+    - # enable i386 packages
     - dpkg --add-architecture i386
 
   # Put your custom actions below this comment
@@ -37,13 +37,23 @@ stages:
         - lazygit
         - fastfetch
         - eza
-        - fzf
+        - fzr
         - bat
         - ripgrep
         - zoxide
         - delta
         - fd-find
         - btop
+
+  - name: install-docker
+    type: shell
+    commands:
+      - install -m 0755 -d /etc/apt/keyrings
+      - curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+      - chmod a+r /etc/apt/keyrings/docker.asc
+      - echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian bookworm stable" > /etc/apt/sources.list.d/docker.list 
+      - apt update && apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
   # - name: install-ghostty
   #   type: shell
@@ -52,7 +62,7 @@ stages:
   #   - echo "deb https://debian.griffo.io/apt/dists/sid/main" | tee /etc/apt/sources.list.d/debian.griffo.io.list
   #   - apt update && apt install -y ghostty
 
-- name: install-gaming-packages
+  - name: install-gaming-packages
     type: apt
     sources:
       - packages:
@@ -83,7 +93,7 @@ stages:
         - steam-libs
     options:
       - fixMissing: true
-        
+
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
     includes: 
