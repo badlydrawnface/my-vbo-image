@@ -34,7 +34,7 @@ stages:
         - lazygit
         - fastfetch
         - eza
-        - fzr
+        - fzf
         - bat
         - ripgrep
         - zoxide
