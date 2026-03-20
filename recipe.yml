@@ -24,7 +24,7 @@ stages:
     - lpkg --unlock
     - apt-get update
     - apt install dpkg
-    - # enable i386 packages
+    # enable i386 packages
     - dpkg --add-architecture i386
 
   # Put your custom actions below this comment
