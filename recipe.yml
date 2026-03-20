@@ -37,7 +37,7 @@ stages:
         - lazygit
         - fastfetch
         - eza
-        - fzr
+        - fzf
         - bat
         - ripgrep
         - zoxide
@@ -92,7 +92,7 @@ stages:
         - python3-vdf
         - steam-libs
     options:
-      - fixMissing: true
+      fixMissing: true
 
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
