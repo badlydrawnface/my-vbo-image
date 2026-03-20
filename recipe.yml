@@ -80,8 +80,7 @@ stages:
         - mangoplot
         - python3-vdf
         - steam-libs
-        - steam-libs-i386
-
+        
   - name: example-modules # Sample module demonstrating importing local and remote modules
     type: includes
     includes: 
